@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>⚡ Confession Bot — Admin Dashboard</title>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Supabase JS (v1 CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.7/dist/umd/supabase.min.js"></script>
+  <!-- GSAP for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div id="app">
+    <div class="bg-gradient"></div>
+    <header class="hero">
+      <div class="hero-left">
+        <div id="profileCard" class="profile-card glass">
+          <img id="adminAvatar" src="" alt="avatar" class="avatar"/>
+          <div class="profile-info">
+            <h1 id="adminName">Loading…</h1>
+            <div class="meta">@<span id="adminUsername">—</span></div>
+            <div class="idline">ID: <span id="adminId">—</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="stats-grid">
+          <div class="stat-card glass" id="cardUsers">
+            <div class="stat-title">Total Users</div>
+            <div class="stat-value" id="totalUsers">—</div>
+            <div class="stat-sub" id="usersToday">Today: —</div>
+          </div>
+
+          <div class="stat-card glass" id="cardConfessions">
+            <div class="stat-title">Total Confessions</div>
+            <div class="stat-value" id="totalConfessions">—</div>
+            <div class="stat-sub" id="confessionsToday">Today: —</div>
+          </div>
+
+          <div class="stat-card glass" id="cardActivity">
+            <div class="stat-title">Active (30d)</div>
+            <div class="stat-value" id="active30">—</div>
+            <div class="stat-sub">User growth (below)</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-container">
+      <section class="chart-panel glass">
+        <div class="panel-head">
+          <h2>User Growth — Last 30 days</h2>
+        </div>
+        <canvas id="growthChart" height="120"></canvas>
+      </section>
+
+      <section class="table-panel glass">
+        <h3>Quick Actions</h3>
+        <div class="actions">
+          <button id="refreshBtn" class="btn">🔄 Refresh</button>
+          <button id="exportBtn" class="btn">⬇ Export CSV</button>
+        </div>
+        <p class="note">Mini-App reads data directly from Supabase (read-only anon key). If counts look off, check your Supabase policies.</p>
+      </section>
+    </main>
+
+    <footer class="footer glass">Made with ⚡ for admins — keep keys safe</footer>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
